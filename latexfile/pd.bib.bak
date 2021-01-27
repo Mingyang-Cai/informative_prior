@@ -1,0 +1,118 @@
+% Encoding: UTF-8
+
+@Book{schafer1997analysis,
+  title     = {Analysis of incomplete multivariate data},
+  publisher = {Chapman and Hall/CRC},
+  year      = {1997},
+  author    = {Schafer, Joseph L},
+}
+
+@Article{hughes2014joint,
+  author    = {Hughes, Rachael A and White, Ian R and Seaman, Shaun R and Carpenter, James R and Tilling, Kate and Sterne, Jonathan AC},
+  journal   = {BMC medical research methodology},
+  title     = {Joint modelling rationale for chained equations},
+  year      = {2014},
+  number    = {1},
+  pages     = {28},
+  volume    = {14},
+  publisher = {Springer},
+}
+
+@Book{van2018flexible,
+  author    = {Van Buuren, Stef},
+  publisher = {CRC press},
+  title     = {Flexible imputation of missing data},
+  year      = {2018},
+}
+
+@Article{buuren2010mice,
+  author    = {Buuren, S van and Groothuis-Oudshoorn, Karin},
+  journal   = {Journal of statistical software},
+  title     = {mice: Multivariate imputation by chained equations in R},
+  year      = {2010},
+  pages     = {1--68},
+  publisher = {University of California, Los Angeles},
+}
+
+@Article{van2007multiple,
+  author    = {Van Buuren, Stef},
+  journal   = {Statistical methods in medical research},
+  title     = {Multiple imputation of discrete and continuous data by fully conditional specification},
+  year      = {2007},
+  number    = {3},
+  pages     = {219--242},
+  volume    = {16},
+  publisher = {Sage Publications Sage UK: London, England},
+}
+
+@Article{liu2014stationary,
+  author    = {Liu, Jingchen and Gelman, Andrew and Hill, Jennifer and Su, Yu-Sung and Kropko, Jonathan},
+  journal   = {Biometrika},
+  title     = {On the stationary distribution of iterative imputations},
+  year      = {2014},
+  number    = {1},
+  pages     = {155--173},
+  volume    = {101},
+  publisher = {Oxford University Press},
+}
+
+@Article{bartlett2015multiple,
+  author    = {Bartlett, Jonathan W and Seaman, Shaun R and White, Ian R and Carpenter, James R and Alzheimer's Disease Neuroimaging Initiative*},
+  journal   = {Statistical methods in medical research},
+  title     = {Multiple imputation of covariates by fully conditional specification: Accommodating the substantive model},
+  year      = {2015},
+  number    = {4},
+  pages     = {462--487},
+  volume    = {24},
+  publisher = {Sage Publications Sage UK: London, England},
+}
+
+@Article{raghunathan2001multivariate,
+  author  = {Raghunathan, Trivellore E and Lepkowski, James M and Van Hoewyk, John and Solenberger, Peter and others},
+  journal = {Survey methodology},
+  title   = {A multivariate technique for multiply imputing missing values using a sequence of regression models},
+  year    = {2001},
+  number  = {1},
+  pages   = {85--96},
+  volume  = {27},
+}
+
+@Article{van2006fully,
+  author    = {Van Buuren, Stef and Brand, Jaap PL and Groothuis-Oudshoorn, Catharina GM and Rubin, Donald B},
+  journal   = {Journal of statistical computation and simulation},
+  title     = {Fully conditional specification in multivariate imputation},
+  year      = {2006},
+  number    = {12},
+  pages     = {1049--1064},
+  volume    = {76},
+  publisher = {Taylor \& Francis},
+}
+
+@Article{10.2307/20461449,
+  author    = {Morris L. Eaton},
+  journal   = {Lecture Notes-Monograph Series},
+  title     = {Multivariate Statistics: A Vector Space Approach},
+  year      = {2007},
+  issn      = {07492170},
+  pages     = {i--512},
+  volume    = {53},
+  publisher = {Institute of Mathematical Statistics},
+  url       = {http://www.jstor.org/stable/20461449},
+}
+
+@Misc{Goodrich2019,
+  author = {Ben Goodrich and Jonah Gabry and Imad Ali and Sam Brilleman},
+  note   = {R package version 2.19.2},
+  title  = {rstanarm: {Bayesian} applied regression modeling via {Stan}.},
+  year   = {2019},
+  url    = {https://mc-stan.org/rstanarm},
+}
+
+@Book{albert2009bayesian,
+  author    = {Albert, Jim},
+  publisher = {Springer},
+  title     = {Bayesian computation with R},
+  year      = {2009},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

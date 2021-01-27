@@ -1,0 +1,220 @@
+\documentclass[12pt, fullpage, a4paper]{article}
+\usepackage{graphicx, latexsym}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{apacite}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{bm}
+\usepackage{epstopdf}
+\usepackage{rotating} %used for \sidewaystable
+\usepackage{apacite}
+\usepackage{booktabs} %used for \toprule
+\usepackage{multirow} %used for \multirow and \multicolumn
+\usepackage{pifont}
+%\singlespacing
+%\onehalfspacing
+\doublespacing
+
+
+\title{Joint distribution properties of Fully Conditional Specification under the normal linear model with normal inverse-gamma priors}
+\author{Mingyang Cai}
+\date{}
+\begin{document}
+\maketitle
+\section{Introduction}
+Multiple imputation (Rubin, 1987) is a widely applied approach for the analysis of incomplete datasets. It involves replacing each missing cell with several plausible imputed values that are drawn from the corresponding posterior predictive distributions. There are two dominant approaches to impute multivariate missing data: joint modeling (JM) and fully conditional specification (FCS). Joint modeling requires a specified joint model for the complete data. Schafer\nocite{schafer1997analysis} (1997) illustrated joint modeling imputation under the multivariate normal model, the saturated multinomial model, the log-linear model, and the general location model. However, with an increasing number of variables and different levels of measurements, it is challenging to decide the joint distribution of the data. The alternative approach, fully conditional specification, allows the flexible specification of the imputation model for each partially observed variable. The imputation procedure of fully conditional specification starts by imputing missing values with a random draw from the marginal distribution. Each incomplete variable is then iteratively imputed with a specified imputation model. 
+
+Fully conditional specification has been proposed under a variety of names: chained equations stochastic relaxation, variable-by-variable imputation, switching regression, sequential regressions, ordered pseudo-Gibbs sampler, partially incompatible MCMC and iterated univariate imputation (van Buuren, 2018, Section 4.5.1)\nocite{van2018flexible}. Fully conditional specification is of great value in practice because of its flexibility of model specification. Van Buuren and Groothuis - Oudshoorn (2010)\nocite{buuren2010mice} summarized the widespread application of fully conditional specification (e.g. cancer, epidemiology , management sciences, politics, psychology and sociology) and several software implements in different software packages (e.g. \texttt{mice} and \texttt{mi} in \texttt{R}, \texttt{IVEWARE} in \texttt{SAS}, \texttt{ice} in \texttt{STATA} and module \texttt{MVA} in \texttt{SPSS}). 
+
+Although many simulation studies demonstrated that fully conditional specification yields plausible imputations in various cases, the theoretical properties of fully conditional specification are not thoroughly understood \cite{van2007multiple}. A sequence of conditional models may not imply a joint distribution to which the algorithm converges. In such a case, the imputation results may systematically differ according to different visit sequences, which is named as ``order effects" \cite{hughes2014joint}. 
+
+Van Buuren (2018, Section 4.6.1) stated two cases in which FCS converges to a joint distribution: first, if the imputation models are all linear with a homogenous normal distributed response, the implicit joint model would be the multivariate normal distribution, and second, if there are three incomplete binary variables which are imputed with a two-way interactions logistic regression model, then FCS would be equivalent to the joint modeling under a zero three-way interaction log-linear model. Liu et al. (2013)\nocite{liu2014stationary} illustrated a series of sufficient conditions under which the imputation distribution for FCS converges in total variation to the posterior distribution of a joint Bayesian model when the sample size increases to infinity. Complementing the work of Liu et al., Hughes (2014) pointed out that, in addition to the compatibility, a ``non-informative margins" condition is another sufficient condition for the equivalency of FCS and joint modeling for finite samples. Hughes (2014) also showed that with multivariate normal distributed data and a non-informative prior, both compatibility and the non-informative margins conditions are satisfied. In that case, fully conditional specification and joint modeling provide imputations from the same posterior distribution. 
+
+Although the default Jeffery's prior for Bayesian imputation under normal linear models performs well for many applications, it is necessary to allow the use of informative priors when some knowledge about the nature of the true values is available. In this paper, we investigate whether the non-informative margins condition is satisfied when the data follow a multivariate Gaussian distribution and the prior for FCS follows a normal inverse-gamma distribution. We would give a brief overview of joint modeling, fully conditional specification, compatibility, and non-informative margins. A theoretical result and a simulation study is performed to demonstrate that the non-informative margins condition is satisfied as well as the transformation from the prior for joint modeling follows a normal inverse-Wishart distribution to the prior for FCS follows a normal inverse-gamma distribution. Finally, we would draw some concluding remarks. 
+
+\section{Background}
+\subsection{Joint modeling}
+Joint modeling involves specifying a parametric joint model $p(Y^{obs}, Y^{mis}|\theta)$ for the complete data and an appropriate prior distribution $p(\theta)$ for the parameter $\theta$. Incomplete cases are partitioned into groups according to various missing patterns and then imputed with different sub-models. Under the assumption of ignorability, the imputation model for each group is the corresponding conditional distribution derived from the assumed joint model $p(Y^{mis}|Y^{obs}) = \int_{}p(Y^{mis}| Y^{obs}, \theta)p(\theta|Y^{obs})d\theta$. Since the joint modeling algorithm converges to the specified multivariate distribution, once the joint imputation model is correctly specified, joint modeling yields valid results and satisfactory theoretical properties. Schafer (1997) discussed both EM and data augmentation algorithms for joint modeling multiple imputation under the multivariate Gaussian model, the saturated multinomial model, the log-linear model, and the general location model. 
+
+\subsection{Fully conditional specification}
+Fully conditional specification attempts to define the joint distribution\\$p(Y^{obs}, Y^{mis}|\theta)$ by positing a univariate imputation model for each partially observed variable. The imputation model is typically a generalized linear model selected based on the nature of the missing variable (e.g. continuous, semi-continuous, categorical and count). Starting from some simple imputation methods, such as mean imputation or a random draw from the sampled values, FCS algorithms iteratively repeat imputations over all missing variables. Precisely, the \emph{t}th iteration for the incomplete variable \emph{$Y_{j}^{mis}$} consists of the following draws:
+\begin{align*}
+\theta_{j}^{t} \sim f(\theta_{j})f(Y_{j}^{obs}|Y_{-j}^{t-1}, \theta_{j})\\
+Y_{j}^{mis(t)} \sim f(Y_{j}^{mis}|Y_{-j}^{t}, \theta_{j}^{t}),
+\end{align*}
+where $f(\theta_{j})$ is generally specified with a noninformative prior. After a sufficient number of iterations, typically ranging from 5 to 10 iterations (Van Buuren, 2018\nocite{van2018flexible}; Oberman et al., 2020\nocite{oberman2020missing}), the stationary distribution is achieved. The final iteration generates a single imputed dataset and the multiple imputations are created by applying FCS in parallel \emph{m} times with different seeds. If the underlying joint distribution defined by separate conditional models exists, the algorithm is equivalent to a Gibbs sampler. 
+
+The attractive feature of fully conditional specification is the flexibility of model specification, which allows models to preserve features in the data, such as skip patterns, incorporating constraints and logical, and consistent bounds \cite{van2007multiple}. Such restrictions would be difficult to formulate when applying joint modeling. One could conveniently construct a sequence of conditional models and avoid the specification of a parametric multivariate distribution, which may not be appropriate for the data in practice.
+
+\subsection{Compatibility} 
+The definition of compatibility is given by Liu et al. (2014): suppose there is a vector of random variables $Y = (Y_1, Y_2, \dots, Y_p)$. A set of conditional model $\{f_{j}(Y_j|Y_{-j}, \theta_{j}) : \theta_{j} \in \Theta_{j}, j = 1, 2, \dots, p\}$ is said to be compatible if there exists a joint model $\{\emph{f}(Y|\theta) : \theta \in \Theta\}$ and a collection of surjective maps $\{t_{j} : \Theta \to \Theta_{j},\: j = 1, 2, \dots, p\}$ such that for each $j$, $\theta_{j} \in \Theta_{j}$ and $\theta \in t_{j}^{-1}(\theta_{j}) = \{\theta : t_{j}(\theta) = \theta_{j}\}$, 
+\begin{gather*}
+f_{j}(Y_j|Y_{-j}, \theta_{j}) = \emph{f}(Y_j|Y_{-j}, \theta).
+\end{gather*}
+Otherwise, $\{f_{j}, j = 1, 2, \dots, p\}$ is said to be incompatible.
+A simple example of compatible models is a set of normal linear models for a vector of continous data : for each variable $Y_j, j = 1, 2, \dots, p$,
+\begin{gather*}
+Y_j = (\textbf1, Y_{-j})\beta_{j} + \sigma_{j}^2, 
+\end{gather*}
+where $\beta_{j}$ is the vector of coefficients and $\textbf1$ is a vector of ones. In such a case, the joint model of $(Y_1, Y_2, \dots, Y_p)$ is a multivariate normal distribution and the map $t_j$ is derived by conditional multivariate normal formula. On the other hand, the classical example incompatible model is linear model with squared terms (Liu et al., 2014; Barlett et al., 2015\nocite{bartlett2015multiple}).
+
+Incompatibility is a theoretical deficiency of fully conditional specification since, in some cases, it is unclear whether the algorithm converges to a multivariate distribution. Consideration of compatibility is significant when the multivariate density is scientific of interest. Both Hughes et al. (2014) and Liu et al. (2013) stated the necessity of model compatibility for the algorithm to converge to a joint distribution. Several papers introduced some cases in which FCS models are compatible with joint distributions (e.g., van Buuren, 2017; Raghunathan et al., 2001\nocite{raghunathan2001multivariate}). Van Buuren\nocite{van2006fully} (2006) also performed some simulation studies of fully conditional specification with strongly incompatible models and concluded the effects of incompatibility are negligible. However, further work is necessary to investigate the adverse effects of incompatibility in more general scenarios. 
+
+\subsection{Non-informative margins condition}
+Hughes et al. (2014) showed that the non-informative margins condition is sufficient for fully conditional specification to converge to a multivariate distribution. Suppose $\pi(\theta_{j})$ is the prior distribution of the conditional model $p(Y_j|Y_{-j}, \theta_{j})$ and $\pi(\theta_{-j})$ is the prior distribution of the marginal model $p(Y_{-j}|\theta_{-j})$, then the non-informative margins condition is satisfied if the joint prior could be factorized into independent priors $\pi(\theta_{j}, \theta_{-j}) = \pi(\theta_{j})\pi(\theta_{-j})$. It is noticeable that the non-informative margin condition does not hold if $p(Y_j|Y_{-j}, \theta_{j})$ and $p(Y_{-j}|\theta_{-j})$ have the same parameter space. When the non-informative margins condition is violated, an order effect appears. Simulations performed by Hughes et al. (2014) demonstrated that such a order effect is subtle. However, more research is needed to verify such claims and it is necessary to be aware of the existence of the order effect. 
+
+\section{Theoretical results}
+In this section, we prove the convergence of fully conditional specification under the normal linear model with normal inverse-gamma priors to a joint distribution. Since the compatibility of the linear normal model is well understood,  we will check the satisfaction of the non-informative margins condition. 
+
+Starting with the problem of Bayesian inference for $\theta = (\mu, \Sigma)$ under a multivariate normal model, let us apply the following prior distribution. Suppose that, given $\Sigma$, the prior distribution of $\mu$ is assumed to be the conditionally multivariate normal,
+\begin{equation}
+\mu | \Sigma \sim N(\mu_{0}, \tau^{-1}\Sigma),
+\end{equation}
+where the hyperparameters $\mu_{0} \in \mathcal{R}^{p}$ and $\tau > 0$ are fixed and known and where $p$ denotes the number of variables. Moreover, suppose that the prior distribution of $\Sigma$ is an inverse-Wishart,
+\begin{equation}
+\Sigma \sim W^{-1}(m, \Lambda)
+\end{equation}
+for fixed hyperparameters $m \ge p$ and $\Lambda$. The prior density for $\theta$ can then be written as
+\begin{equation}
+\begin{array}{ll}
+\pi(\theta) \propto &|\Sigma|^{-(\frac{m+p+2}{2})}\;\exp\;\{-\frac{1}{2}tr(\Lambda^{-1}\Sigma^{-1})\}\\
+& \times\;\exp\;\{-\frac{\tau}{2}(\mu-\mu_{0})^{T}\Sigma^{-1}(\mu-\mu_{0})\}
+\end{array}	
+\end{equation}
+For each variable $Y_{j}, j = 1, 2, \dots, p$, we partition the mean vector $\mu$ as $(\mu_j, \mu_{-j})^T$ and the covariance matrix $\Sigma$ as 
+\begin{eqnarray*}
+	\left(\begin{array}{cc}
+		\omega_{j} & \xi_{j}^T\\
+		\xi_{j} & \Sigma_{-j}, 
+	\end{array}\right)
+\end{eqnarray*}
+such that $Y_j \sim \mathcal{N}(\mu_j, \omega_{j})$ and $Y_{-j} \sim \mathcal{N}(\mu_{-j}, \Sigma_{-j})$. Similarly, We partition the scale paramter $\mu_{0}$ as $(\mu_{0j}, \mu_{0-j})^T$ and $\Lambda$ as:
+\begin{eqnarray*}
+	\left(\begin{array}{cc}
+		\Lambda_{j} & \psi_{j}^T\\
+		\psi_{j} & \Lambda_{-j}. 
+	\end{array}\right)
+\end{eqnarray*}
+The conditional model of $Y_j$ given $Y_{-j}$ is the normal linear regression $Y_{j} = \alpha_j + \beta_{j}^TY_{-j} + \sigma_{j}$, where $\beta_{j}^T = \xi_{j}^T\Sigma_{-j}^{-1}$, $\alpha_j = \mu_j - \xi_{j}^T\Sigma_{-j}^{-1}\mu_{-j}$ and $\sigma_{j} = \omega_{j} - \xi_{j}^T\Sigma_{-j}^{-1}\xi_{j}$. The corresponding vectors of parameters $\theta_{j}$ and $\theta_{-j}$ would be : 
+\begin{equation}
+\begin{array}{cc}
+\theta_{j}  &= (\alpha_j, \beta_{j}, \sigma_{j})\\
+\theta_{-j} &= (\mu_{-j}, \Sigma_{-j}).
+\end{array}
+\end{equation}
+By applying the partion function illustrated by Eaton (2007, pp. 165)\nocite{10.2307/20461449} and by block diagonalization of a partitioned matrix, the joint prior for $\theta_{j}$ and $\theta_{-j}$ can be derived from $\pi(\theta)$ as :
+\begin{equation}
+\begin{array}{l}
+\pi(\theta_{j}, \theta_{-j}) = p(\sigma_{j})p(\beta_{j}|\sigma_{j})p(\Sigma_{-j})\\
+\times \exp\;\{-\frac{\tau}{2}(\alpha_{j} + \beta_{j}\mu_{0-j}\ - \mu_{0j})^{T}(\sigma_{j})^{-1}(\alpha_{j} + \beta_{j}\mu_{0-j}\ - \mu_{0j})\}\\
+\times \exp\{-\frac{\tau}{2}(\mu_{-j}-\mu_{0-j})^{T}\Sigma_{-j}^{-1}(\mu_{-j}-\mu_{0-j})\} \times |\Sigma_{-j}|\\
+=\pi(\theta_{j})\pi(\theta_{-j}),
+\end{array}
+\end{equation}
+where
+\begin{align}
+&\pi(\theta_{j}) = p(\sigma_{j})p(\beta_{j}|\sigma_{j}) \nonumber\\
+&\times exp\;\{-\frac{\tau}{2}(\alpha_{j} + \beta_{j}\mu_{0-j}\ - \mu_{0j})^{T}(\sigma_{j})^{-1}(\alpha_{j} + \beta_{j}\mu_{0-j}\ - \mu_{0j})\}\\
+&\text{and} \nonumber\\
+&\pi(\theta_{-j}) = p(\Sigma_{-j})\times exp\{-\frac{\tau}{2}(\mu_{-j}-\mu_{0-j})^{T}\Sigma_{-j}^{-1}(\mu_{-j}-\mu_{0-j})\} \times |\Sigma_{-j}|
+\end{align}
+
+and $p(\sigma_{j}) \sim W^{-1}(m, \lambda_j)$, $p(\beta_{j}|\sigma_{j}) \sim \mathcal{N}(\psi_{j}^T\Lambda_{-j}^{-1}, \lambda_j\Lambda_{-j}^{-1})$, $p(\Sigma_{-j}) \sim W^{-1}(m-1, \Lambda_{-j})$, $\lambda_j = \Lambda_{j} - \psi_{j}^T\Lambda_{-j}^{-1}\psi_{j}$ (Eaton, 2007, Section 8.2). Therefore, the ``non-informative" margins condition is satisfied.
+Based on equations (6) and (7), we could derive the prior for the conditional linear model from the prior for the multivariate distribution:
+\begin{equation}
+\begin{array}{l}
+p(\sigma_{j}) \sim W^{-1}(m, \lambda_j)\\
+p(\beta_{j}|\sigma_{j}) \sim \mathcal{N}(\psi_{j}^T\Lambda_{-j}, \lambda_j\Lambda_{-j})\\
+p(\alpha_{j}|\sigma_{j}) \sim \mathcal{N}(\mu_{0j} - \psi_{j}^T\Lambda_{-j}\mu_{02}, \tau^{-1}\sigma_{j} - (\mu_{-0j})^{2}\lambda_j\Lambda_{-j}^{-1})
+\end{array}
+\end{equation} 
+Since the conditional $\beta_{j} | \sigma_{j}$ follows a normal distribution, the marginal distribution $\beta_{j}$ would be a student's t-distribution $\beta_{j} \sim t(\psi_{j}^T\Lambda_{-j}^{-1}, \\m\Lambda_{-j}^{-1}\lambda_{j}^{-1}, 2m-p+1)$. When the sample size increases, $\beta_{j}$ tends to the normal distribution $N(\psi_{j}^T\Lambda_{-j}^{-1}, \frac{\lambda_{j}\Lambda_{-j}}{m-1})$. Similarly, the marginal distribution $\alpha_{j}$ would be $t(\mu_{0j} - \psi_{j}^T\Lambda_{-j}\mu_{02}, m(\tau^{-1} - (\mu_{0-j})^{2}\Lambda_{-j}^{-1})\Lambda_{j}^{-1}, 2m-p+1)$. When the sample size increases, $\alpha_{j}$ tends to the normal distribution $N(\mu_{0j} - \psi_{j}^T\Lambda_{-j}\mu_{02},\\
+ \frac{1}{(\tau^{-1} - (\mu_{-0j})^{2}\Lambda_{-j}^{-1})(m-1)}\Lambda_{j})$. Usually, when the sample size is over 30, the difference between student's t-distribution and the corresponding normally distributed approximation is negligble. With the prior transformation formula, one could apply Bayesian imputation under the normal linear model with normal inverse-gamma priors. This holds for both the prior information about the distribution of the data (e.g. location and scale of variables) and the scientific model (e.g. regression coefficients).  
+
+\section{Simulation}
+We perform a simulation study to demonstrate the validity and the convergence of fully conditional specification when the conditional models are simple linear regressions with an inverse gamma prior for the error term and a multivariate normal prior for regression weights. We look for the disappearance of order effects, which is evident of the convergence of fully conditional specification to a multivariate distribution. 
+
+We repeat the simulation 500 times and generate a dataset with 200 cases for every simulation according to the following multivariate distribution :
+\begin{eqnarray*}
+	\begin{pmatrix}x\\
+		y\\
+		z
+	\end{pmatrix} & \sim & \mathcal{N}\left[\left(\begin{array}{c}
+		1\\
+		4\\
+		9
+	\end{array}\right),\left(\begin{array}{ccc}
+		4 & 2 & 2\\
+		2 & 4 & 2\\
+		2 & 2 & 9 
+	\end{array}\right)\right]\\
+\end{eqnarray*}
+Fifty percent missingness are missing is induced on either variable $x$, $y$ or $z$. The proportion of the three missing patterns is equal. When evaluating whether it is appropriate to specify a normal inverse gamma prior, we consider both missing completely at random (MCAR) mechanisms and right-tailed missing at random (MARr) mechanisms where higher values have a larger probability to be unobserved. While, when investigate the existence of order effects, we only conduct the simulation under MCAR missingness mechanism to ensure that the missingness does not attribute to any order effects. We specify a weak informative prior for two reasons. First, with a weak informative prior, the frequentist inference is still plausible by applying Rule's rule (1987). Second, Goodrich et al. (2019)\nocite{Goodrich2019} suggested that compared with flat non-informative priors, weak informative priors places warranted weight to extreme parameter values. In such a case, The prior under the joint model is specified as: $\mu_{0} = (0, 0, 0)^T$, $\tau = 1$, $m = 3$ and 
+\begin{eqnarray*}
+	\Lambda = \left(\begin{array}{ccc}
+		60 & 0 & 0\\
+		0 & 60 & 0\\
+		0 & 0 & 60 
+	\end{array}\right)
+\end{eqnarray*}
+and the corresponding prior for separated linear regression model would be the same: $\pi(\sigma) \sim W^{-1}(3, 60)$ and 
+\begin{eqnarray*}
+	(\alpha, \beta)^T
+	 & \sim & \mathcal{N}\left[\left(\begin{array}{c}
+		0\\
+		0\\
+		0
+	\end{array}\right),\left(\begin{array}{ccc}
+		60 & 0 & 0\\
+		0 & 3600 & 0\\
+		0 & 0 & 3600 
+	\end{array}\right)\right].\\
+\end{eqnarray*}
+\subsection{Scalar inference for the mean of variable Y}
+The aim is to assess whether Bayesian imputation under a normal linear model with normal inverse gamma priors would yield unbiased estimates and exact coverage of the nominal 95\% confidence intervals. Table \ref{tab1} shows that with weak informative prior, fully conditional specification also provide valid imputations. The estimates are unbiased and the coverage of the nominal 95\% confidence intervals is correct under both MCAR and MARr. Without the validity of a normal inverse gamma prior specification, further investigations into the convergence would be redundant. 
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ccccc}
+		& Bias  & Cov  & Ciw &  \\
+		MCAR & 0     & 0.95 & 0.74 &  \\
+		MARr & -0.01 & 0.97 & 0.73 &  \\
+		&       &      &  & 
+	\end{tabular}
+\caption{Bias of the estimates ($E(Y)$) and coverage of nominal 95\% confidence intervals under MCAR and MARr}
+\label{tab1}
+\end{table}
+
+\subsection{order effect evaluation}
+The visit sequence laid upon the simulation is $z$, $x$ and $y$. To identify the presence of any systematic order effect, we estimate the regression coefficient directly after updating variable $z$ and after updating variable $x$. Specifically, the \emph{i}th iteration of fully conditional specification would be augmented as:
+\begin{enumerate}
+	\item impute $z$ given $x^{i-1}$ and $y^{i-1}$.
+	\item build the linear regression $y = \alpha + \beta_{1}x + \beta_{2}z + \epsilon$ and collect the coefficient $\beta_{1}$, donoted as $\hat{\beta_{1}}^z$.
+	\item impute $x$ given $z^{i}$ and $y^{i-1}$.
+    \item build the linear regression $y = \alpha + \beta_{1}x + \beta_{2}z + \epsilon$ and collect the coefficient $\beta_{1}$, donoted as $\hat{\beta_{1}}^x$.
+    \item impute $y$ given $z^{i}$ and $x^{i}$.	 
+\end{enumerate}
+After a burn-in period with 10 iterations, the fully conditional specification algorithm was performed with an additional 1000 iterations, in which differences between the estimates $\hat{\beta_{1}}^z - \hat{\beta_{1}}^x$ are recorded. The estimates from the first 10 iterations are omitted since the FCS algorithms commonly reach convergence around 5 to 10 iterations. Estimates from the additional 1000 iterations would be partitioned into subsequences with equal size, which are used for variance calculation. We calculate the nominal 95\% confidence interval of the difference. The standard error of the difference is estimated with batch-means methods (Albert, 2009, pp.124)\nocite{albert2009bayesian}. The mean of $\hat{\beta_{1}}^z - \hat{\beta_{1}}^x$ is set to zero and since only three 95\% confidence intervals derived from 500 repetitions do not cross the zero, there is no indication of any order effects. We also monitor the posterior distribution of the coefficient under both joint modeling and fully conditional specification. Figure \ref{fig1} shows a qqplot demonstration the closeness of the posterior distribution for $\beta_{1}$ derived from both joint modeling and fully conditional specification. Since the posterior distributions for $\beta_{1}$ under joint modeling and FCS are very similiar, any differences may be considered negligible in practice.  
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{plot/200708}
+	\caption{qqplot demonstrating the closeness of the posterior distribution of JM and FCS for $\beta_{1}$}
+	\label{fig1}
+\end{figure} 
+
+All these results confirm that under the normal inverse gamma prior, Bayesian imputation under normal linear model converges to the corresponding multivariate normal distribution. 
+
+\section{Conclusion}
+Based on the theory of the non-informative margins condition proposed by Hughes et al. (2014), we prove the convergence of fully conditional specification under the normal linear model with normal-inverse-gamma prior distributions. Since it has been shown that a sequence of normal linear models is compatible with a multivariate normal density, we only focus on the non-informative margins condition for the prior. The transformation of the prior between a normal inverse gamma for fully conditional specification anda normal inverse Wishart for joint modeling is useful if one would like to apply fully conditional specification and only collect prior information relative to the distribution of variables rather than scientific models. 
+
+Fully conditional specification is an appealing imputation method because it allows one to specify a sequence of flexible and simple conditional models and bypass the difficulty of multivariate modeling in practice. The default prior for normal linear regression is Jeffreys prior. However, it is worth developing other types of priors for fully conditional specification such that one could select the prior, which suits the description of prior knowledge best. When including new kinds of priors in fully conditional specification algorithms, it is necessary to investigate the convergence of the algorithm with new conditional models. Specifically, one should study the non-informative margin conditions for new priors. Furthermore, compatibility should also be considered if the imputation model is novel. Our work takes steps in this direction. 
+
+Although a series of investigations has shown that the adverse effects of violating compatibility and the non-informative margin conditions may be small, all of these investigations rely on pre-defined simulation settings. More researches are needed to verify conditions under which the fully conditional specification algorithm converges to a multivariate distribution and cases in which the violation of compatibility and non-informative margin has negligible adverse impacts on the result.
+
+Since the compatibility and non-informative margins conditions are satisfied under the saturated multinomial distribution, combined with our results, it is possible to develop a prior setting to eliminate order effects of the fully conditional specification algorithm under general location model. Moreover, various types of priors of the generalized linear model for the fully condional specification and corresponding joint modeling rationales are subject to further work.   
+
+
+\newpage
+\bibliographystyle{apacite}
+\bibliography{pd}
+
+\end{document}

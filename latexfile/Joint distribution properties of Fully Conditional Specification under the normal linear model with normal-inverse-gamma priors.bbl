@@ -1,0 +1,361 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Albert%
+}{%
+Albert%
+}{%
+{\protect \APACyear {2009}}%
+}]{%
+albert2009bayesian}
+\APACinsertmetastar {%
+albert2009bayesian}%
+\begin{APACrefauthors}%
+Albert, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2009}.
+\newblock
+\APACrefbtitle {Bayesian computation with R} {Bayesian computation with r}.
+\newblock
+\APACaddressPublisher{}{Springer}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Bartlett%
+, Seaman%
+, White%
+, Carpenter%
+\BCBL {}\ \BBA {} Initiative*%
+}{%
+Bartlett%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+bartlett2015multiple}
+\APACinsertmetastar {%
+bartlett2015multiple}%
+\begin{APACrefauthors}%
+Bartlett, J\BPBI W.%
+, Seaman, S\BPBI R.%
+, White, I\BPBI R.%
+, Carpenter, J\BPBI R.%
+\BCBL {}\ \BBA {} Initiative*, A\BPBI D\BPBI N.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Multiple imputation of covariates by fully conditional
+  specification: Accommodating the substantive model} {Multiple imputation of
+  covariates by fully conditional specification: Accommodating the substantive
+  model}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Statistical methods in medical
+  research}{24}{4}{462--487}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Buuren%
+\ \BBA {} Groothuis-Oudshoorn%
+}{%
+Buuren%
+\ \BBA {} Groothuis-Oudshoorn%
+}{%
+{\protect \APACyear {2010}}%
+}]{%
+buuren2010mice}
+\APACinsertmetastar {%
+buuren2010mice}%
+\begin{APACrefauthors}%
+Buuren, S\BPBI v.%
+\BCBT {}\ \BBA {} Groothuis-Oudshoorn, K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {mice: Multivariate imputation by chained equations in R}
+  {mice: Multivariate imputation by chained equations in r}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of statistical software}{}{}{1--68}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Eaton%
+}{%
+Eaton%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+10.2307/20461449}
+\APACinsertmetastar {%
+10.2307/20461449}%
+\begin{APACrefauthors}%
+Eaton, M\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Multivariate Statistics: A Vector Space Approach}
+  {Multivariate statistics: A vector space approach}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Lecture Notes-Monograph Series}{53}{}{i--512}.
+\newblock
+\begin{APACrefURL} \url{http://www.jstor.org/stable/20461449} \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Goodrich%
+, Gabry%
+, Ali%
+\BCBL {}\ \BBA {} Brilleman%
+}{%
+Goodrich%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+Goodrich2019}
+\APACinsertmetastar {%
+Goodrich2019}%
+\begin{APACrefauthors}%
+Goodrich, B.%
+, Gabry, J.%
+, Ali, I.%
+\BCBL {}\ \BBA {} Brilleman, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+\APACrefbtitle {rstanarm: {Bayesian} applied regression modeling via {Stan}.}
+  {rstanarm: {Bayesian} applied regression modeling via {Stan}.}
+\newblock
+\begin{APACrefURL} \url{https://mc-stan.org/rstanarm} \end{APACrefURL}
+\newblock
+\APACrefnote{R package version 2.19.2}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Hughes%
+\ \protect \BOthers {.}}{%
+Hughes%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+hughes2014joint}
+\APACinsertmetastar {%
+hughes2014joint}%
+\begin{APACrefauthors}%
+Hughes, R\BPBI A.%
+, White, I\BPBI R.%
+, Seaman, S\BPBI R.%
+, Carpenter, J\BPBI R.%
+, Tilling, K.%
+\BCBL {}\ \BBA {} Sterne, J\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Joint modelling rationale for chained equations} {Joint
+  modelling rationale for chained equations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{BMC medical research methodology}{14}{1}{28}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Liu%
+, Gelman%
+, Hill%
+, Su%
+\BCBL {}\ \BBA {} Kropko%
+}{%
+Liu%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+liu2014stationary}
+\APACinsertmetastar {%
+liu2014stationary}%
+\begin{APACrefauthors}%
+Liu, J.%
+, Gelman, A.%
+, Hill, J.%
+, Su, Y\BHBI S.%
+\BCBL {}\ \BBA {} Kropko, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {On the stationary distribution of iterative imputations}
+  {On the stationary distribution of iterative imputations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Biometrika}{101}{1}{155--173}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Oberman%
+, van Buuren%
+\BCBL {}\ \BBA {} Vink%
+}{%
+Oberman%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+oberman2020missing}
+\APACinsertmetastar {%
+oberman2020missing}%
+\begin{APACrefauthors}%
+Oberman, H\BPBI I.%
+, van Buuren, S.%
+\BCBL {}\ \BBA {} Vink, G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Missing the Point: Non-Convergence in Iterative
+  Imputation Algorithms} {Missing the point: Non-convergence in iterative
+  imputation algorithms}.{\BBCQ}
+\newblock
+
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Raghunathan%
+, Lepkowski%
+, Van~Hoewyk%
+, Solenberger%
+\BCBL {}\ \protect \BOthers {.}}{%
+Raghunathan%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2001}}%
+}]{%
+raghunathan2001multivariate}
+\APACinsertmetastar {%
+raghunathan2001multivariate}%
+\begin{APACrefauthors}%
+Raghunathan, T\BPBI E.%
+, Lepkowski, J\BPBI M.%
+, Van~Hoewyk, J.%
+, Solenberger, P.%
+\BCBL {}\ \BOthersPeriod {.}\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2001}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {A multivariate technique for multiply imputing missing
+  values using a sequence of regression models} {A multivariate technique for
+  multiply imputing missing values using a sequence of regression
+  models}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Survey methodology}{27}{1}{85--96}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Schafer%
+}{%
+Schafer%
+}{%
+{\protect \APACyear {1997}}%
+}]{%
+schafer1997analysis}
+\APACinsertmetastar {%
+schafer1997analysis}%
+\begin{APACrefauthors}%
+Schafer, J\BPBI L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{1997}.
+\newblock
+\APACrefbtitle {Analysis of incomplete multivariate data} {Analysis of
+  incomplete multivariate data}.
+\newblock
+\APACaddressPublisher{}{Chapman and Hall/CRC}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Van~Buuren%
+}{%
+Van~Buuren%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+van2007multiple}
+\APACinsertmetastar {%
+van2007multiple}%
+\begin{APACrefauthors}%
+Van~Buuren, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Multiple imputation of discrete and continuous data by
+  fully conditional specification} {Multiple imputation of discrete and
+  continuous data by fully conditional specification}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Statistical methods in medical
+  research}{16}{3}{219--242}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Van~Buuren%
+}{%
+Van~Buuren%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+van2018flexible}
+\APACinsertmetastar {%
+van2018flexible}%
+\begin{APACrefauthors}%
+Van~Buuren, S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2018}.
+\newblock
+\APACrefbtitle {Flexible imputation of missing data} {Flexible imputation of
+  missing data}.
+\newblock
+\APACaddressPublisher{}{CRC press}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Van~Buuren%
+, Brand%
+, Groothuis-Oudshoorn%
+\BCBL {}\ \BBA {} Rubin%
+}{%
+Van~Buuren%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2006}}%
+}]{%
+van2006fully}
+\APACinsertmetastar {%
+van2006fully}%
+\begin{APACrefauthors}%
+Van~Buuren, S.%
+, Brand, J\BPBI P.%
+, Groothuis-Oudshoorn, C\BPBI G.%
+\BCBL {}\ \BBA {} Rubin, D\BPBI B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2006}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Fully conditional specification in multivariate
+  imputation} {Fully conditional specification in multivariate
+  imputation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of statistical computation and
+  simulation}{76}{12}{1049--1064}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
